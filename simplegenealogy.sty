@@ -1,0 +1,83 @@
+\ProvidesPackage{simplegenealogy}
+
+\newcommand{\simpletree}[1]{%
+  \begin{genealogypicture}[%
+          template=database traditional,%
+          level size=1.3cm%
+  ]%
+  input{#1}%
+  \end{genealogypicture}%
+}
+
+% Take graph file as param
+\newcommand{\dbtree}[1]{%
+  \begin{genealogypicture}[%
+    processing=database,%
+    database format=medium marriage below,%
+    node size=2.5cm,%
+    level size=2.5cm,%
+    %level distance=6mm,
+    list separators hang,%
+    name font=\bfseries,%
+    surn code={\textcolor{red!50!black}{##1}},%
+    place text={\newline}{},%
+    date format=d month yyyy,%
+    tcbset={male/.style={colframe=blue,colback=blue!5},%
+    female/.style={colframe=red,colback=red!5}},%
+    box={fit basedim=7pt,boxsep=2pt,segmentation style=solid,%
+    halign=flush left,before upper=\parskip1pt,%
+    \gtrDBsex,drop fuzzy shadow,%
+    %if image defined={add to width=25mm,right=25mm,
+    %underlay={\begin{tcbclipinterior}\path[fill overzoom image=\gtrDBimage]
+    %([xshift=-24mm]interior.south east) rectangle (interior.north east);
+    %\end{tcbclipinterior}},
+    %}{},
+    },
+    edges=rounded,%
+    symbols record reset,%
+    after tree={\node[font=\scriptsize\itshape,text width=1.8cm,below left,%
+    fill=white,fill opacity=0.4,text opacity=1]%
+    %at (current bounding box.north east) {\gtrSymbolsLegend};},
+    at (current bounding box.east) {\gtrSymbolsLegend};},%
+    ]%
+    input{#1}%
+  \end{genealogypicture}%
+}
+
+% provide a "figuretree" environment to encapsulate
+% a tree as a figure
+\newenvironment{simplefiguretree}[2][]{%
+  \begin{figure}[#1]%
+    \centerline{\simpletree{#2}}%
+}{%
+  \end{figure}%
+}
+
+\usepackage{rotating}
+
+% provide a "sidewayssimplefiguretree" environment to encapsulate
+% a tree as a sideways figure
+\newenvironment{sidewayssimplefiguretree}[2][]{%
+  \begin{sidewaysfigure}[#1]%
+    \centerline{\simpletree{#2}}%
+}{%
+  \end{sidewaysfigure}%
+}
+
+% provide a "figuretree" environment to encapsulate
+% a tree as a figure
+\newenvironment{dbfiguretree}[2][]{%
+  \begin{figure}[#1]%
+    \centerline{\dbtree{#2}}%
+}{%
+  \end{figure}%
+}
+
+% provide a "sidewaysdbfiguretree" environment to encapsulate
+% a tree as a sideways figure
+\newenvironment{sidewaysdbfiguretree}[2][]{%
+  \begin{sidewaysfigure}[#1]%
+    \centerline{\dbtree{#2}}%
+}{%
+  \end{sidewaysfigure}%
+}

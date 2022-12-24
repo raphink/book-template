@@ -1,0 +1,13 @@
+---
+references:
+- id: academie
+  type: report
+  archive: Académie François Bourdon
+  archive-place: Le Creusot
+  issued:
+  - year: '1895'
+    month: '08'
+    day: '23'
+  title: Contrat de Test
+
+...

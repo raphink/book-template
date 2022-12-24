@@ -1,0 +1,7 @@
+% options per letter
+\LettrineOptionsFor{A}{findent=0.4em}
+\LettrineOptionsFor{F}{findent=0.8em}
+\LettrineOptionsFor{J}{lhang=0.5,findent=0.7em}
+\LettrineOptionsFor{L}{findent=0.8em}
+\LettrineOptionsFor{N}{findent=0.7em}
+\LettrineOptionsFor{R}{findent=0.8em}
